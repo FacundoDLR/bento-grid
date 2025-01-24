@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; 
+  width: 100%; 
+}
+
+.bento-grid {
+  background: hsla(36, 100%, 79%, 0.645);
+  width: 90%; 
+  max-width: 70rem; 
+  height: auto; 
+  max-height: 55rem; 
+  aspect-ratio: 16 / 9; 
+  display: grid;
+  gap: 2rem;
+
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas:
+    "create-shedule create-shedule create-shedule social-media social-media social-media social-media social-media social-media shedule shedule shedule"
+    "create-shedule create-shedule create-shedule social-media social-media social-media social-media social-media social-media shedule shedule shedule"
+    "create-shedule create-shedule create-shedule social-media social-media social-media social-media social-media social-media shedule shedule shedule"
+    "create-shedule create-shedule create-shedule social-media social-media social-media social-media social-media social-media shedule shedule shedule" /*  */
+    "create-shedule create-shedule create-shedule inner inner inner inner inner inner shedule shedule shedule"
+    "write-content write-content write-content inner inner inner inner inner inner shedule shedule shedule"
+    "write-content write-content write-content inner inner inner inner inner inner shedule shedule shedule" /*  */
+    "write-content write-content write-content audience-percent audience-percent audience-percent grow-followers grow-followers grow-followers grow-followers grow-followers grow-followers"
+    "write-content write-content write-content audience-percent audience-percent audience-percent grow-followers grow-followers grow-followers grow-followers grow-followers grow-followers"
+    "write-content write-content write-content audience-percent audience-percent audience-percent grow-followers grow-followers grow-followers grow-followers grow-followers grow-followers";
+}
+
+.bento-item {
+  border: 2px solid #464545;
+  border-radius: 5px;
+}
+
+.bento-grid .bento-item:nth-child(1) {
+  grid-area: social-media;
+}
+.bento-grid .bento-item:nth-child(2) {
+  grid-area: inner;
+}
+
+.bento-grid .bento-item:nth-child(3) {
+  grid-area: shedule;
+}
+.bento-grid .bento-item:nth-child(4) {
+  grid-area: grow-followers;
+}
+
+.bento-grid .bento-item:nth-child(5) {
+  grid-area: audience-percent;
+}
+.bento-grid .bento-item:nth-child(6) {
+  grid-area: create-shedule;
+}
+.bento-grid .bento-item:nth-child(7) {
+  grid-area: write-content;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}

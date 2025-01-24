@@ -1,42 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+
   <title>Frontend Mentor | Bento grid</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="stylesheet" href="./assets/css/style.css">
+    body {
+      min-height: 100vh;
+      min-width: 100vw;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .bento-grid {
+      background: hsla(36, 100%, 79%, 0.645);
+      width: 100%;
+      max-width: 70rem;
+      max-height: 55rem;
+      display: grid;
+      gap: 2rem;
+
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      grid-template-areas:
+        "create-shedule create-shedule create-shedule social-media social-media social-media social-media social-media social-media shedule shedule shedule"
+        "create-shedule create-shedule create-shedule social-media social-media social-media social-media social-media social-media shedule shedule shedule"
+        "create-shedule create-shedule create-shedule social-media social-media social-media social-media social-media social-media shedule shedule shedule"
+        "create-shedule create-shedule create-shedule social-media social-media social-media social-media social-media social-media shedule shedule shedule"
+        /*  */
+        "create-shedule create-shedule create-shedule inner inner inner inner inner inner shedule shedule shedule"
+        "write-content write-content write-content inner inner inner inner inner inner shedule shedule shedule"
+        "write-content write-content write-content inner inner inner inner inner inner shedule shedule shedule"
+        /*  */
+        "write-content write-content write-content audience-percent audience-percent audience-percent grow-followers grow-followers grow-followers grow-followers grow-followers grow-followers"
+        "write-content write-content write-content audience-percent audience-percent audience-percent grow-followers grow-followers grow-followers grow-followers grow-followers grow-followers"
+        "write-content write-content write-content audience-percent audience-percent audience-percent grow-followers grow-followers grow-followers grow-followers grow-followers grow-followers"
+      ;
+    }
+
+    .bento-item {
+      border: 2px solid #464545;
+      border-radius: 5px;
+    }
+
+    .bento-grid .bento-item:nth-child(1) {
+      grid-area: social-media;
+    }
+
+    .bento-grid .bento-item:nth-child(2) {
+      grid-area: inner;
+    }
+
+    .bento-grid .bento-item:nth-child(3) {
+      grid-area: shedule;
+    }
+
+    .bento-grid .bento-item:nth-child(4) {
+      grid-area: grow-followers;
+    }
+
+    .bento-grid .bento-item:nth-child(5) {
+      grid-area: audience-percent;
+    }
+
+    .bento-grid .bento-item:nth-child(6) {
+      grid-area: create-shedule;
+    }
+
+    .bento-grid .bento-item:nth-child(7) {
+      grid-area: write-content;
+    }
+  </style> -->
 </head>
+
 <body>
 
-  Social Media 10x Faster with AI
-  Over 4,000 5-star reviews
+  <main>
+    <div class="bento-grid">
+      <div class="bento-item shedule"></div>
+      <div class="bento-item inner"></div>
+      <div class="bento-item grow-followers"></div>
+      <div class="bento-item audience-percent"></div>
+      <div class="bento-item social-media"></div>
+      <div class="bento-item write-content"></div>
+      <div class="bento-item create-shedule"></div>
+    </div>
+  </main>
 
-  Manage multiple accounts and platforms.
 
-  Maintain a consistent posting schedule.
-
-  Schedule to social media.
-  Optimize post timings to publish content at the perfect time for your audience.
-  
-  Grow followers with non-stop content.
-
-  >56% faster audience growth
-  
-  Create and schedule content quicker.
-
-  Write your content using AI.
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
 </body>
+
 </html>
+<!--   Social Media 10x Faster with AI
+Over 4,000 5-star reviews
+
+Manage multiple accounts and platforms.
+
+Maintain a consistent posting schedule.
+
+Schedule to social media.
+Optimize post timings to publish content at the perfect time for your audience.
+
+Grow followers with non-stop content.
+
+>56% faster audience growth
+
+Create and schedule content quicker.
+
+Write your content using AI.
+
+<div class="attribution">
+  Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+  Coded by <a href="#">Your Name Here</a>.
+</div> -->
