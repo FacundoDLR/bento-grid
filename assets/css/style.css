@@ -21,6 +21,14 @@
   --letter-spacing-small: -0.125rem; /* -2px */
 
   --font--weight-medium: 500;
+
+  --color-light-purple: hsl(254, 88%, 90%);
+  --color-purple: hsl(256, 67%, 59%);
+  --color-light-yellow: hsl(31, 66%, 93%);
+  --color-yellow: hsl(39, 100%, 71%);
+
+  --color-white: hsl(0, 0%, 100%);
+  --color-black: hsl(0, 0%, 7%);
 }
 
 /* ------------------------------
@@ -38,23 +46,29 @@
    BASE STYLES
 ------------------------------ */
 body {
-    width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f4f4f4;
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  background-color: #f6f5f6;
   font-family: var(--font-primary);
 }
 
 main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
+  padding-inline: clamp(40px, -160.5937px + 22.2635vi, 160px);
+  padding-block-start: clamp(52px, 0.18px + 5.7514vi, 83px);
+  padding-block-end: 65px;
 }
 
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
 h1,
 .audience-percent h2 {
   font-size: var(--font-size-large);
@@ -81,12 +95,6 @@ p {
 }
 
 .bento-grid {
-  background: hsla(36, 100%, 79%, 0.645);
-  width: 90%;
-  max-width: 70rem;
-  height: auto;
-  max-height: 55rem;
-  aspect-ratio: 16 / 9;
   display: grid;
   gap: 2rem;
 
@@ -105,9 +113,9 @@ p {
     "write-content write-content write-content audience-percent audience-percent audience-percent grow-followers grow-followers grow-followers grow-followers grow-followers grow-followers";
 }
 
-.bento-item {
-  border: 2px solid #464545;
-  border-radius: 5px;
+.bento-item,
+.box {
+  border-radius: 0.625rem; /* 10px */
 }
 
 .bento-grid .bento-item:nth-child(1) {
@@ -144,15 +152,17 @@ p {
   gap: 2rem; /* 32px */
 }
 
-.inner > div {
-  border: 2px dashed #464545;
-}
-
 .bento-item,
 .box {
   display: flex;
 }
-.bento-item:is(.create-shedule,.write-content,.audience-percent,.social-media,.shedule),
+.bento-item:is(
+    .create-shedule,
+    .write-content,
+    .audience-percent,
+    .social-media,
+    .shedule
+  ),
 .box:is(.manage-multiple, .maintanin-consistent) {
   flex-direction: column;
   justify-content: space-between;
@@ -173,8 +183,29 @@ img {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
   height: 100%;
   width: auto;
+  margin: 0 auto;
+}
+
+.bento-item:is(.social-media, .grow-followers) {
+  background-color: var(--color-purple);
+  color: var(--color-white);
+}
+.write-content,
+.maintanin-consistent {
+  background-color: var(--color-yellow);
+}
+.create-shedule {
+  background-color: var(--color-light-yellow);
+}
+.shedule {
+  background-color: var(--color-light-purple);
+}
+.audience-percent,
+.manage-multiple {
+  background-color: var(--color-white);
 }
 
 /* footer {
@@ -192,13 +223,23 @@ footer a {
 .bento-item.create-shedule {
   justify-content: space-around;
 }
-
+.create-shedule > h2 span:first-child {
+  color: var(--color-purple);
+  font-style: italic;
+}
 /* --------- social media --------- */
-.social-media {
+.bento-item.social-media {
+  justify-content: center;
+  gap: 1.5rem;
   align-items: center;
   text-align: center;
 }
-
+.social-media > h1 span:first-child {
+  color: var(--color-yellow);
+}
+.social-media > h1 span:last-child {
+  font-style: italic;
+}
 .review {
   max-width: 13.95rem;
 }
@@ -212,20 +253,24 @@ footer a {
 .manage-multiple .image-relative {
   max-height: 4.125rem;
 }
+.manage-multiple .image-relative img {
+  object-fit: contain;
+}
 
 /* ---- maintanin shedule ---- */
 .maintanin-consistent {
   overflow: hidden;
+  row-gap: 1rem;
 }
 
 .maintanin-consistent .image-relative {
   min-height: -webkit-fill-available; /* problem here, seek alternative */
 }
 
-/* PROBLEM HERE */
 .maintanin-consistent img {
-  width: inherit;
-  height: inherit;
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
 }
 
 /* --------- grow followers --------- */
@@ -246,3 +291,168 @@ footer a {
 /* ------------------------------
    RESPONSIVE DESIGN
 ------------------------------ */
+@media screen and (768px <= width <= 1024px) {
+  :root {
+    --font-size-large: 3.375rem; /* 54px */
+    --font-size-medium: 2.25rem; /* 36px */
+    --font-size-small: 1.75rem; /* 28px */
+    --font-size-x-small: 1.125rem; /* 18px */
+  }
+
+  main {
+    padding-inline: clamp(16px, -6.9008px + 6.1069vi, 40px);
+    padding-block-start: clamp(32px, 12.916px + 5.0891vi, 52px);
+    padding-block-end: clamp(40px, 5.9447px + 9.0814vi, 75.69px);
+  }
+
+  .bento-grid {
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: 324px 247px 496px 246px 131px 354px;
+    grid-template-areas:
+      "social-media social-media social-media social-media social-media social-media social-media social-media"
+      "inner inner inner inner inner inner inner inner"
+      "shedule shedule shedule shedule shedule shedule shedule shedule"
+      "grow-followers grow-followers grow-followers grow-followers grow-followers grow-followers grow-followers grow-followers"
+      "audience-percent audience-percent audience-percent audience-percent audience-percent audience-percent audience-percent audience-percent"
+      "create-shedule create-shedule create-shedule create-shedule write-content write-content write-content write-content";
+  }
+
+  /* --------- inner container TABLET --------- */
+  /* ---- mange multiple TABLET ---- */
+  .manage-multiple h3 {
+    max-width: 14ch;
+  }
+
+  .box {
+    flex: 1;
+  }
+
+  /* --------- shedule social media TABLET --------- */
+  .shedule {
+    align-items: center;
+  }
+  .shedule p {
+    max-width: 28ch;
+    text-align: center;
+  }
+
+  /* --------- grow followers TABLET --------- */
+  .grow-followers h2 {
+    max-width: 10ch;
+  }
+
+  /* --------- audience percent TABLET --------- */
+  .bento-item.audience-percent {
+    flex-direction: row;
+  }
+  .audience-percent img {
+    width: inherit;
+  }
+}
+
+@media screen and (width < 768px) {
+  :root {
+    --font-size-large: 2.875rem; /* 46px */
+    --font-size-medium: 2rem; /* 32px */
+    --font-size-small: 1.625rem; /* 26px */
+    --font-size-x-small: 1rem; /* 16px */
+  }
+
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 290px 410px 468px 372px 215px 234px 350px;
+    grid-template-areas:
+      "social-media social-media social-media social-media"
+      "inner inner inner inner"
+      "shedule shedule shedule shedule"
+      "grow-followers grow-followers grow-followers grow-followers"
+      "audience-percent audience-percent audience-percent audience-percent"
+      "create-shedule create-shedule create-shedule create-shedule"
+      "write-content write-content write-content write-content";
+  }
+
+  /* --------- inner container MOBILE --------- */
+  /* ---- mange multiple MOBILE ---- */
+  .bento-item.inner {
+    flex-direction: column;
+  }
+  .box {
+    flex: 1;
+  }
+  .manage-multiple .image-relative img {
+    position: static;
+    width: 100%;
+  }
+  .manage-multiple {
+    overflow: inherit;
+  }
+  .manage-multiple h3 {
+    max-width: 100%;
+  }
+
+  /* ---- maintance multiple MOBILE ---- */
+  .maintanin-consistent .image-relative img {
+    block-size: inherit;
+    width: auto !important;
+  }
+  .maintanin-consistent h3 {
+    max-width: 12ch;
+  }
+  .maintanin-consistent .image-relative img {
+    position: static;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  /* --------- shedule social media MOBILE --------- */
+  .shedule h2 {
+    font-size: var(--font-size-small);
+  }
+  .shedule .image-relative {
+    min-height: 0%;
+  }
+  .shedule img {
+    transform: translate(0, 0);
+    position: inherit;
+    width: inherit;
+    height: 100%;
+  }
+
+  /* --------- grow followers MOBILE --------- */
+  .grow-followers {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .grow-followers .image-relative {
+    max-height: 12.5rem;
+    text-align: center;
+  }
+  .grow-followers img {
+    position: inherit;
+  }
+  .grow-followers h2 {
+    max-width: 10ch;
+    text-align: center;
+  }
+
+  /* --------- audience percent MOBILE --------- */
+  .bento-item.audience-percent {
+    flex-direction: column;
+  }
+  .audience-percent img {
+    max-width: max-content;
+    max-height: 4.125rem;
+  }
+
+  /* --------- create shedule MOBILE --------- */
+  .create-shedule {
+    gap: 1.5rem;
+  }
+  .create-shedule img {
+    max-width: 11.87rem;
+  }
+
+  .write-content img {
+    max-width: 13.68rem;
+  }
+}
