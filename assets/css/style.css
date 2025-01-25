@@ -1,3 +1,28 @@
+@font-face {
+  font-family: "Dm Sans";
+  src: url("../fonts/DMSans-VariableFont_opsz\,wght.ttf")
+    format("truetype");
+}
+:root {
+  /* text styles */
+  --font-primary: "DM Sans", serif;
+
+  --font-size-large: 3.875rem; /* 62px */
+  --font-size-medium: 2.5rem; /* 40px */
+  --font-size-small: 2rem; /* 32px */
+  --font-size-x-small: 1.125rem; /* 18px */
+
+  --line-height-large: 0.935; /* 93.5% */
+  --line-height-medium: 0.9; /* 90% */
+  --line-height-small: 0.875; /* 87.5% */
+  --line-height-x-small: 1.11; /* 111% */
+
+  --letter-spacing-medium: -0.1875rem; /* -3px */
+  --letter-spacing-small: -0.125rem; /* -2px */
+
+  --font--weight-medium: 500;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,23 +35,49 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #f4f4f4;
+  font-family: var(--font-primary);
 }
 
 main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; 
-  width: 100%; 
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  font-size: var(--font-size-large);
+  letter-spacing: var(--letter-spacing-medium);
+  line-height: var(--line-height-large);
+  font-weight: var(--font--weight-medium);
+}
+h2 {
+  font-size: var(--font-size-medium);
+  letter-spacing: var(--letter-spacing-small);
+  line-height: var(--line-height-medium);
+  font-weight: var(--font--weight-medium);
+}
+h3 {
+  font-size: var(--font-size-small);
+  letter-spacing: var(--letter-spacing-small);
+  line-height: var(--line-height-small);
+  font-weight: var(--font--weight-medium);
+}
+
+p {
+  font-size: var(--font-size-x-small);
+  line-height: var(--line-height-x-small);
+  font-weight: 400;
 }
 
 .bento-grid {
   background: hsla(36, 100%, 79%, 0.645);
-  width: 90%; 
-  max-width: 70rem; 
-  height: auto; 
-  max-height: 55rem; 
-  aspect-ratio: 16 / 9; 
+  width: 90%;
+  max-width: 70rem;
+  height: auto;
+  max-height: 55rem;
+  aspect-ratio: 16 / 9;
   display: grid;
   gap: 2rem;
 
@@ -51,27 +102,53 @@ main {
 }
 
 .bento-grid .bento-item:nth-child(1) {
-  grid-area: social-media;
+  grid-area: shedule;
 }
 .bento-grid .bento-item:nth-child(2) {
   grid-area: inner;
 }
-
 .bento-grid .bento-item:nth-child(3) {
-  grid-area: shedule;
-}
-.bento-grid .bento-item:nth-child(4) {
   grid-area: grow-followers;
 }
-
-.bento-grid .bento-item:nth-child(5) {
+.bento-grid .bento-item:nth-child(4) {
   grid-area: audience-percent;
 }
+.bento-grid .bento-item:nth-child(5) {
+  grid-area: social-media;
+}
 .bento-grid .bento-item:nth-child(6) {
-  grid-area: create-shedule;
+  grid-area: write-content;
 }
 .bento-grid .bento-item:nth-child(7) {
-  grid-area: write-content;
+  grid-area: create-shedule;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.bento-item.create-shedule,
+.bento-item.social-media,
+.bento-item.shedule {
+  padding: 2rem; /* 32px */
+}
+
+.bento-item.write-content,
+.bento-item.audience-percent,
+.bento-item.grow-followers,
+.bento-item.inner .manage-multiple,
+.bento-item.inner .maintanin-consistent {
+  padding: 1.5rem; /* 24px */
+}
+
+.bento-item.inner {
+  gap: 2rem; /* 32px */
+}
+.bento-item.inner,
+.bento-item.grow-followers {
+  display: flex;
 }
 
 .attribution {
@@ -80,4 +157,124 @@ main {
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+
+/* create and shedule */
+.create-shedule {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/* write content */
+.write-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* social media */
+.social-media {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.review {
+  width: 13.95rem;
+}
+
+/* inner */
+/* mange multiple */
+.manage-multiple {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.manage-multiple .image-relative {
+  width: 100%;
+  position: relative; /* Permite posicionar hijos absolutamente */
+  min-height: 4.125rem; /* Alto máximo del contenedor */
+}
+.manage-multiple .image-relative img {
+  position: absolute; /* Posición relativa al contenedor padre */
+  top: 0; /* Alinea al inicio en el eje vertical */
+  left: 0; /* Alinea al inicio en el eje horizontal */
+  height: 100%; /* Hace que la imagen ocupe toda la altura del contenedor */
+  width: auto; /* Mantiene la proporción de la imagen mientras ocupa el alto */
+}
+/* maintanin shedule */
+.maintanin-consistent {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.maintanin-consistent .image-relative {
+  width: 100%;
+  position: relative; /* Permite posicionar hijos absolutamente */
+  min-height: -webkit-fill-available; /* Alto máximo del contenedor */
+}
+.maintanin-consistent .image-relative img {
+  position: absolute; /* Posición relativa al contenedor padre */
+  top: 0; /* Alinea al inicio en el eje vertical */
+  left: 0; /* Alinea al inicio en el eje horizontal */
+  height: 100%; /* Hace que la imagen ocupe toda la altura del contenedor */
+  width: 100%; /* Mantiene la proporción de la imagen mientras ocupa el alto */
+}
+
+/* audience percent */
+.audience-percent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.audience-percent h2 {
+  font-size: var(--font-size-large);
+  letter-spacing: var(--letter-spacing-medium);
+  line-height: var(--line-height-large);
+}
+
+/* grow followers */
+.grow-followers {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grow-followers .image-relative {
+  width: 100%;
+  position: relative; /* Permite posicionar hijos absolutamente */
+  min-height: 100%; /* Alto máximo del contenedor */
+}
+.grow-followers .image-relative img {
+  position: absolute; /* Posición relativa al contenedor padre */
+  top: 0; /* Alinea al inicio en el eje vertical */
+  left: 0; /* Alinea al inicio en el eje horizontal */
+  height: 100%; /* Hace que la imagen ocupe toda la altura del contenedor */
+  width: auto; /* Mantiene la proporción de la imagen mientras ocupa el alto */
+}
+
+/* shedule social media */
+.shedule {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: clip;
+  gap: 1.5rem;
+}
+
+.shedule .image-relative {
+  width: 100%;
+  position: relative; /* Permite posicionar hijos absolutamente */
+  min-height: 19.8rem; /* Alto máximo del contenedor */
+}
+.shedule .image-relative img {
+  position: absolute; /* Posición relativa al contenedor padre */
+  top: 0; /* Alinea al inicio en el eje vertical */
+  left: 0; /* Alinea al inicio en el eje horizontal */
+  height: 100%; /* Hace que la imagen ocupe toda la altura del contenedor */
+  width: auto; /* Mantiene la proporción de la imagen mientras ocupa el alto */
 }
